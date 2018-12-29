@@ -29,7 +29,7 @@ This application as of now is building in progress.
 
 ### Code style
 
-Javascript, styled-components, CSS Grids
+Javascript, CSS Grids
 
 ### Tech/Framework used
 
