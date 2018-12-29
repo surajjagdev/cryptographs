@@ -3,10 +3,10 @@ import './Nav.css';
 const NavBar = () => {
   return (
     <div className="navBar">
-      <div>CryptoDash</div>
+      <div id="cryptoLink">CryptoDash</div>
       <div />
-      <div>DashBoard</div>
-      <div>Settings</div>
+      <div id="dashboardLink">DashBoard </div>
+      <div id="settingsLink">Settings</div>
     </div>
   );
 };

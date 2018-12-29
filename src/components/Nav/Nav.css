@@ -1,4 +1,10 @@
 .navBar {
   display: grid;
   grid-template-columns: 100px auto 100px 100px;
+  margin-bottom: 40px;
+}
+#cryptoLink,
+#dashboardLink,
+#settingsLink {
+  cursor: pointer;
 }
