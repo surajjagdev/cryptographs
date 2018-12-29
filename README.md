@@ -20,7 +20,8 @@ Users can search their favourite crytocurrency and get a real-time comparision t
 
 ## Installation and Use
 
-Need a code editor,node.js installed. Clone source file, then cd into the project. Next run command 'npm install' or 'yarn install'. Then run 'npm start' or 'yarn start'. The application will start in browser at 'http://localhost:3000/'.Alternatively to view live site go to: https://cryptographs-currency.herokuapp.com/ . The site is slow to load, because a free heroku dyno is used.
+Need a code editor,node.js installed. Clone source file, then cd into the project. Next run command 'npm install' or 'yarn install'. Then run 'npm start' or 'yarn start'. The application will start in browser at 'http://localhost:3000/'.
+Alternatively to view live site go to: https://cryptographs-currency.herokuapp.com/ . The site is slow to load, because a free heroku dyno is used.
 
 ## Build Status
 
