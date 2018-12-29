@@ -3,3 +3,6 @@ body {
   color: white;
   font-family: 'Quantico', sans-serif;
 }
+.App {
+  padding: 40px;
+}

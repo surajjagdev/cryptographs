@@ -4,7 +4,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>CrytoGraphs</header>
+        <header>Welcome to CrytoGraphs</header>
       </div>
     );
   }
