@@ -1,4 +1,5 @@
-#ProjectTitle: CrytoGraphs
+#ProjectTitle:
+CrytoGraphs
 
 #Description
 Users can search their favourite crytocurrency and get a real-time comparision to the fan-favourites.
