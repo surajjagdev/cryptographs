@@ -1,10 +1,21 @@
-.navBar {
+.navBar,
+#links {
   display: grid;
   grid-template-columns: 100px auto 100px 100px;
   margin-bottom: 40px;
 }
 #cryptoLink,
-#dashboardLink,
-#settingsLink {
+#dashboardButton,
+#settingsButton {
   cursor: pointer;
+}
+#dashboardButton,
+#settingsButton {
+  padding: 1px;
+}
+#settingsButton {
+  margin-left: 20px;
+}
+#dashboardButton {
+  margin-right: 10px;
 }
