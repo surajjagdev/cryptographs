@@ -5,9 +5,36 @@ export const AppContext = React.createContext();
 export default class AppProvider extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { page: 'dashboard', setPage: this.setPage };
+    this.state = {
+      page: 'settings',
+      ...this.savedSettings(),
+      setPage: this.setPage,
+      confirmFavorites: this.confirmFavorites
+    };
   }
-  setPage = page => this.setState({ page });
+  confirmFavorites = () => {
+    console.log('hello');
+    this.setState({ firstVisit: false, page: 'dashboard' });
+    localStorage.setItem(
+      'cryptoDash',
+      JSON.stringify({
+        test: 'hello'
+      })
+    );
+  };
+  //get data from local storage. If no data then page will be set to settings page
+  //and firstVisit will be true
+  savedSettings() {
+    let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
+    if (!cryptoDashData) {
+      return { page: 'settings', firstVisit: true };
+    }
+    return {};
+  }
+  setPage = page => {
+    this.setState({ page });
+    console.log('current page', this.state.page);
+  };
 
   render() {
     return (

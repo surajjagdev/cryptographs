@@ -19,3 +19,7 @@
 #dashboardButton {
   margin-right: 10px;
 }
+#settingsButton:active,
+#dashboardButton:active {
+  color: green;
+}

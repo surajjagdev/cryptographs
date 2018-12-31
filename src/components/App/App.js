@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from '../Nav/Nav.js';
-import Logo from '../Logo/Logo.js';
+import Settings from '../Settings/Settings.js';
 import AppProvider from './AppProvider.js';
 class App extends Component {
   render() {
@@ -9,7 +9,7 @@ class App extends Component {
       <div className="App">
         <AppProvider>
           <NavBar />
-          <Logo />
+          <Settings />
         </AppProvider>
       </div>
     );
