@@ -1,12 +1,13 @@
 import React from 'react';
+import Page from '../SharedPages/Page.js';
 import ConfirmButton from './ConfirmButton';
 import Logo from './Logo/Logo.js';
 const Settings = () => {
   return (
-    <div>
+    <Page name="settings">
       <Logo />
       <ConfirmButton />
-    </div>
+    </Page>
   );
 };
 export default Settings;
