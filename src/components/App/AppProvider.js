@@ -1,4 +1,5 @@
 import React from 'react';
+const cryptowrapper = require('cryptocompare');
 //creates new react context
 export const AppContext = React.createContext();
 //provides state to other components
@@ -12,6 +13,15 @@ export default class AppProvider extends React.Component {
       confirmFavorites: this.confirmFavorites
     };
   }
+  componentDidMount = () => {
+    this.fetchCoins();
+  };
+  //await for coin list
+  fetchCoins = async () => {
+    let coinList = (await cryptowrapper.coinList()).Data;
+    this.setState({ coinList });
+    console.log(coinList);
+  };
   confirmFavorites = () => {
     console.log('hello');
     this.setState({ firstVisit: false, page: 'dashboard' });
