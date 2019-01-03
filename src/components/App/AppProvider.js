@@ -8,6 +8,7 @@ export default class AppProvider extends React.Component {
     super(props);
     this.state = {
       page: 'settings',
+      favorites: ['BTC', 'ETH', 'XRP', 'EOS', 'FLAP'],
       ...this.savedSettings(),
       setPage: this.setPage,
       confirmFavorites: this.confirmFavorites

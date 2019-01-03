@@ -4,15 +4,17 @@ import Grid from './Grid.js';
 import CoinTile from './CoinTile';
 //import './CoinList.css';
 //lets return first 100 items in array of coin list, first 10 if its topSection
-const getCoinsDisplay = (coinList, topSection) => {
-  return Object.keys(coinList).slice(0, topSection ? 10 : 100);
+const getCoinsDisplay = (coinList, topSection, favorites) => {
+  return topSection
+    ? favorites
+    : Object.keys(coinList).slice(0, topSection ? 10 : 100);
 };
 export default function({ topSection }) {
   return (
     <AppContext.Consumer>
-      {({ coinList }) => (
+      {({ coinList, favorites }) => (
         <Grid>
-          {getCoinsDisplay(coinList, topSection).map(coinKey => (
+          {getCoinsDisplay(coinList, topSection, favorites).map(coinKey => (
             <CoinTile
               key={coinList[coinKey].Id}
               topSection={topSection}
