@@ -3,9 +3,21 @@
   background-color: rgb(45, 73, 100);
   text-align: center;
 }
-.coinListGrid:hover {
+#selectableTile:hover,
+#deletableTile:hover {
   cursor: pointer;
+}
+#selectableTile:hover {
   color: #18ab29;
+}
+#deletableTile:hover {
+  color: rgb(172, 8, 8);
+}
+.deleteIcon {
+  opacity: 0;
+}
+.deleteIcon:hover {
+  opacity: 1;
 }
 .CoinHeaderGrid {
   display: grid;

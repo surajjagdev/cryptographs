@@ -7,6 +7,7 @@ const Settings = () => {
   return (
     <Page name="settings">
       <Logo />
+      <CoinList topSection />
       <ConfirmButton />
       <CoinList />
     </Page>
