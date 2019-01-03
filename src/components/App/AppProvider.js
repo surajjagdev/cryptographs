@@ -47,7 +47,7 @@ export default class AppProvider extends React.Component {
     localStorage.setItem(
       'cryptoDash',
       JSON.stringify({
-        test: 'hello'
+        favorites: this.state.favorites
       })
     );
   };
@@ -58,7 +58,8 @@ export default class AppProvider extends React.Component {
     if (!cryptoDashData) {
       return { page: 'settings', firstVisit: true };
     }
-    return {};
+    let { favorites } = cryptoDashData;
+    return { favorites };
   }
   setPage = page => {
     this.setState({ page });
