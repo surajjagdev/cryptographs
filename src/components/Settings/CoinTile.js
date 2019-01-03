@@ -4,19 +4,42 @@ import CoinHeaders from './CoinHeaders';
 import CoinImage from '../SharedPages/CoinImage';
 import './CoinList.css';
 const CoinTile = ({ coinKey, topSection }) => {
-  const getIdName = () => {
-    if (topSection) {
-      return 'deletableTile';
-    } else if (!topSection) {
-      return 'selectableTile';
-    }
-  };
+  //if in topSection remove coin, else add coin
   return (
     <AppContext.Consumer>
-      {({ coinList }) => {
+      {({ coinList, addCoin, removeCoin, isInFavorites }) => {
         let coins = coinList[coinKey];
+        const getIdName = () => {
+          if (topSection) {
+            return 'deletableTile';
+          } else if (!topSection) {
+            return 'selectableTile';
+          }
+          if (isInFavorites(coinKey)) {
+            return 'disabledTile';
+          }
+        };
+        function clickCoinHandler(topSection, coinKey, addCoin, removeCoin) {
+          return topSection
+            ? () => {
+                removeCoin(coinKey);
+              }
+            : () => {
+                //event.preventDefault();
+                addCoin(coins.CoinName);
+              };
+        }
         return (
-          <div className="coinListGrid" id={getIdName()} key={coins.Id}>
+          <div
+            className="coinListGrid"
+            id={getIdName()}
+            onClick={clickCoinHandler(
+              topSection,
+              coins.CoinName,
+              addCoin,
+              removeCoin
+            )}
+          >
             <CoinHeaders
               topSection={topSection}
               name={coins.CoinName}

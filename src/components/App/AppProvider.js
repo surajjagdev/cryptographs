@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 const cryptowrapper = require('cryptocompare');
 //creates new react context
 export const AppContext = React.createContext();
@@ -7,21 +8,37 @@ export default class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 'settings',
+      page: 'dashboard',
       favorites: ['BTC', 'ETH', 'XRP', 'EOS', 'FLAP'],
       ...this.savedSettings(),
       setPage: this.setPage,
+      addCoin: this.addCoin,
+      removeCoin: this.removeCoin,
+      isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites
     };
   }
   componentDidMount = () => {
     this.fetchCoins();
   };
+  addCoin = key => {
+    let favorites = [...this.state.favorites];
+    if (favorites.length < 10) {
+      favorites.push(key);
+      this.setPage({ favorites });
+    }
+  };
+  removeCoin = key => {
+    let favoriteCoins = [...this.state.favorites];
+    this.setState({ favorites: _.pull(favoriteCoins, key) });
+  };
+  isInFavorites = key => {
+    _.includes(this.state.favorites, key);
+  };
   //await for coin list
   fetchCoins = async () => {
     let coinList = (await cryptowrapper.coinList()).Data;
     this.setState({ coinList });
-    console.log(coinList);
   };
   confirmFavorites = () => {
     console.log('hello');
@@ -48,6 +65,7 @@ export default class AppProvider extends React.Component {
   };
 
   render() {
+    console.log(this.state.favorites);
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
