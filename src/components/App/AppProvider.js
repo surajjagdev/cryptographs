@@ -15,7 +15,8 @@ export default class AppProvider extends React.Component {
       addCoin: this.addCoin,
       removeCoin: this.removeCoin,
       isInFavorites: this.isInFavorites,
-      confirmFavorites: this.confirmFavorites
+      confirmFavorites: this.confirmFavorites,
+      setFilteredCoins: this.setFilteredCoins
     };
   }
   componentDidMount = () => {
@@ -64,6 +65,10 @@ export default class AppProvider extends React.Component {
   setPage = page => {
     this.setState({ page });
     console.log('current page', this.state.page);
+  };
+  //set filtered coins on app
+  setFilteredCoins = filteredCoins => {
+    this.setState({ filteredCoins });
   };
 
   render() {
