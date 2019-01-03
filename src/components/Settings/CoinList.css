@@ -7,3 +7,10 @@
   cursor: pointer;
   color: #18ab29;
 }
+.CoinHeaderGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.coinSymbol {
+  justify-self: right;
+}
