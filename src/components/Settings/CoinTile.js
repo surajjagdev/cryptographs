@@ -26,19 +26,14 @@ const CoinTile = ({ coinKey, topSection }) => {
               }
             : () => {
                 //event.preventDefault();
-                addCoin(coins.CoinName);
+                addCoin(coinKey);
               };
         }
         return (
           <div
             className="coinListGrid"
             id={getIdName()}
-            onClick={clickCoinHandler(
-              topSection,
-              coins.CoinName,
-              addCoin,
-              removeCoin
-            )}
+            onClick={clickCoinHandler(topSection, coinKey, addCoin, removeCoin)}
           >
             <CoinHeaders
               topSection={topSection}

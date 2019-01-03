@@ -8,7 +8,7 @@ export default class AppProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 'dashboard',
+      page: 'settings',
       favorites: ['BTC', 'ETH', 'XRP', 'EOS', 'FLAP'],
       ...this.savedSettings(),
       setPage: this.setPage,
@@ -21,11 +21,12 @@ export default class AppProvider extends React.Component {
   componentDidMount = () => {
     this.fetchCoins();
   };
-  addCoin = key => {
+  addCoin = x => {
     let favorites = [...this.state.favorites];
     if (favorites.length < 10) {
-      favorites.push(key);
-      this.setPage({ favorites });
+      favorites.push(x);
+      console.log(x);
+      this.setState({ favorites });
     }
   };
   removeCoin = key => {
@@ -65,7 +66,7 @@ export default class AppProvider extends React.Component {
   };
 
   render() {
-    console.log(this.state.favorites);
+    //console.log(this.state.favorites);
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
