@@ -6,7 +6,7 @@ const CoinImage = props => {
     <img
       alt={props.coins.CoinSymbol}
       style={props.style || { height: '50px' }}
-      src={`http://cryptocompare.com/${props.coins.ImageUrl}`}
+      src={`//cryptocompare.com/${props.coins.ImageUrl}`}
     />
   );
 };
