@@ -2,6 +2,7 @@ import React from 'react';
 import './Grid.css';
 import { AppContext } from '../App/AppProvider';
 //losash to filter
+//hi
 import _ from 'lodash';
 import fuzzy from 'fuzzy';
 const filterCoins = (e, setFilteredCoins, coinList) => {
