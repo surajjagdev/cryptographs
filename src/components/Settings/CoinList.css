@@ -13,9 +13,10 @@
 #deletableTile:hover {
   color: rgb(172, 8, 8);
 }
-#disabledTile:hover {
+#disabledTile {
   pointer-events: none;
   opacity: 0.5;
+  color: white;
 }
 .deleteIcon {
   opacity: 0;

@@ -12,11 +12,10 @@ const CoinTile = ({ coinKey, topSection }) => {
         const getIdName = () => {
           if (topSection) {
             return 'deletableTile';
-          } else if (!topSection) {
-            return 'selectableTile';
-          }
-          if (isInFavorites(coinKey)) {
+          } else if (!topSection && isInFavorites(coinKey)) {
             return 'disabledTile';
+          } else {
+            return 'selectableTile';
           }
         };
         function clickCoinHandler(topSection, coinKey, addCoin, removeCoin) {

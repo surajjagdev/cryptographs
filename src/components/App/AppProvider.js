@@ -34,9 +34,8 @@ export default class AppProvider extends React.Component {
     let favoriteCoins = [...this.state.favorites];
     this.setState({ favorites: _.pull(favoriteCoins, key) });
   };
-  isInFavorites = key => {
-    _.includes(this.state.favorites, key);
-  };
+  isInFavorites = key => _.includes(this.state.favorites, key);
+
   //await for coin list
   fetchCoins = async () => {
     let coinList = (await cryptowrapper.coinList()).Data;
@@ -72,7 +71,7 @@ export default class AppProvider extends React.Component {
   };
 
   render() {
-    //console.log(this.state.favorites);
+    console.log(this.state.isInFavorites);
     return (
       <AppContext.Provider value={this.state}>
         {this.props.children}
