@@ -38,7 +38,3 @@ React, HighCharts, CryptoCompare API, Fuzzy Search, Lodash, LocalStorage, Google
 ### Features
 
 Search, save favourite crytocurrency. View real-time market-value on graphs and compare with fan-favourite crytocurrencies. Also, using React context (sort of like redux passing state down using store).
-
-### Contibutions
-
-surajjagdev
