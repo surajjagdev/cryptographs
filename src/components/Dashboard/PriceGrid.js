@@ -9,8 +9,8 @@ const PriceGrid = () => {
     <AppContext.Consumer>
       {({ prices }) => (
         <Grid>
-          {prices.map(price => (
-            <PriceTile price={price} />
+          {prices.map((price, index) => (
+            <PriceTile key={index} price={price} />
           ))}
         </Grid>
       )}

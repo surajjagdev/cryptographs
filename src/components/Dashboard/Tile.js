@@ -1,9 +1,11 @@
 import React from 'react';
 import './Dashboard.css';
-const Tile = ({ symbol, price }) => {
+const Tile = ({ symbol, change, price }) => {
   return (
     <div className="priceTile">
-      {symbol} & {price}
+      <div className="coinSymbol">{symbol}</div>
+      <div className="coinChange">{change}</div>
+      <div className="coinPrice">${price}</div>
     </div>
   );
 };

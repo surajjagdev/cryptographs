@@ -1,6 +1,6 @@
 .priceGrid {
   display: Grid;
-  grid-template-columns: repeat (5, 1fr);
+  grid-template-columns: repeat(5, minmax(100px, 1fr));
   grid-gap: 15px;
   margin-top: 20px;
   text-align: center;
@@ -13,4 +13,18 @@
   box-shadow: 0px 0px 5px 1px;
   text-align: center;
   background-color: rgb(45, 73, 100);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.coinSymbol {
+  justify-self: left;
+}
+.coinChange {
+  justify-self: right;
+  margin-left: -5px;
+  font-size: 1em;
+}
+.coinPrice {
+  font-size: 1.5em;
+  justify-self: left;
 }
