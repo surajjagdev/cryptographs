@@ -4,6 +4,7 @@ import NavBar from '../Nav/Nav.js';
 import Settings from '../Settings/Settings.js';
 import AppProvider from './AppProvider.js';
 import Content from '../SharedPages/Content';
+import Dashboard from '../Dashboard/Dashboard';
 class App extends Component {
   render() {
     return (
@@ -12,6 +13,7 @@ class App extends Component {
           <NavBar />
           <Content>
             <Settings />
+            <Dashboard />
           </Content>
         </AppProvider>
       </div>

@@ -56,9 +56,10 @@ export default class AppProvider extends React.Component {
     let returnData = [];
     for (let i = 0; i < this.state.favorites.length; i++) {
       try {
+        //get USD prices because not every coin has CAD prices
         let priceData = await cryptowrapper.priceFull(
           this.state.favorites[i],
-          'CAD'
+          'USD'
         );
         returnData.push(priceData);
       } catch (error) {
