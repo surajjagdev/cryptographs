@@ -19,10 +19,17 @@
 .coinSymbol {
   justify-self: left;
 }
-.coinChange {
+.coinChangeGreen {
   justify-self: right;
   margin-left: -5px;
   font-size: 1em;
+  color: green;
+}
+.coinChangeRed {
+  justify-self: right;
+  margin-left: -5px;
+  font-size: 1em;
+  color: red;
 }
 .coinPrice {
   font-size: 1.5em;
