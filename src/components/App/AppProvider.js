@@ -21,6 +21,7 @@ export default class AppProvider extends React.Component {
   }
   componentDidMount = () => {
     this.fetchCoins();
+    this.fetchPrices();
   };
   addCoin = x => {
     let favorites = [...this.state.favorites];
@@ -41,9 +42,35 @@ export default class AppProvider extends React.Component {
     let coinList = (await cryptowrapper.coinList()).Data;
     this.setState({ coinList });
   };
+  fetchPrices = async () => {
+    if (this.state.firstVisit) {
+      return;
+    }
+    //await the prices then set the state
+    let prices = await this.prices();
+    console.log(prices);
+    this.setState({ prices });
+  };
+  //return a promise array
+  prices = async () => {
+    let returnData = [];
+    for (let i = 0; i < this.state.favorites.length; i++) {
+      try {
+        let priceData = await cryptowrapper.priceFull(
+          this.state.favorites[i],
+          'CAD'
+        );
+        returnData.push(priceData);
+      } catch (error) {
+        console.warn(`Fetching prices error ${error}`);
+      }
+    }
+    return returnData;
+  };
   confirmFavorites = () => {
-    console.log('hello');
-    this.setState({ firstVisit: false, page: 'dashboard' });
+    this.setState({ firstVisit: false, page: 'dashboard' }, () => {
+      this.fetchPrices();
+    });
     localStorage.setItem(
       'cryptoDash',
       JSON.stringify({
