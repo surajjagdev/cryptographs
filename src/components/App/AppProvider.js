@@ -16,7 +16,8 @@ export default class AppProvider extends React.Component {
       removeCoin: this.removeCoin,
       isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites,
-      setFilteredCoins: this.setFilteredCoins
+      setFilteredCoins: this.setFilteredCoins,
+      setCurrentFavorite: this.setCurrentFavorite
     };
   }
   componentDidMount = () => {
@@ -69,16 +70,38 @@ export default class AppProvider extends React.Component {
     return returnData;
   };
   confirmFavorites = () => {
-    this.setState({ firstVisit: false, page: 'dashboard' }, () => {
-      this.fetchPrices();
-    });
+    let currentFavorite = this.state.favorites[0];
+    this.setState(
+      { firstVisit: false, page: 'dashboard', currentFavorite },
+      () => {
+        this.fetchPrices();
+      }
+    );
     localStorage.setItem(
       'cryptoDash',
       JSON.stringify({
-        favorites: this.state.favorites
+        favorites: this.state.favorites,
+        currentFavorite
       })
     );
   };
+  //setting state of currentFavorite then going to the local storage and setting local storage to be stringified version of currentFavorite
+  setCurrentFavorite = symbol => {
+    this.setState({ currentFavorite: symbol });
+    localStorage.setItem(
+      'cryptoDash',
+      JSON.stringify({
+        ...JSON.parse(localStorage.getItem('cryptoDash')),
+        currentFavorite: symbol
+      })
+    );
+  };
+  /* setCurrentFavorite = symbol => {
+    this.setState({ currentFavorite: symbol });
+    localStorage.setItem('cryptoDash', JSON.stringify({
+      currentFavorite:symbol
+    }))
+  };*/
   //get data from local storage. If no data then page will be set to settings page
   //and firstVisit will be true
   savedSettings() {
@@ -86,8 +109,8 @@ export default class AppProvider extends React.Component {
     if (!cryptoDashData) {
       return { page: 'settings', firstVisit: true };
     }
-    let { favorites } = cryptoDashData;
-    return { favorites };
+    let { favorites, currentFavorite } = cryptoDashData;
+    return { favorites, currentFavorite };
   }
   setPage = page => {
     this.setState({ page });

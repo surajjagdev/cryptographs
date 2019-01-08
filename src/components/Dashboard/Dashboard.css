@@ -1,5 +1,5 @@
 .priceGrid {
-  display: Grid;
+  display: grid;
   grid-template-columns: repeat(5, minmax(100px, 1fr));
   grid-gap: 15px;
   margin-top: 20px;
@@ -34,4 +34,15 @@
 .coinPrice {
   font-size: 1.5em;
   justify-self: left;
+}
+.coinSpotLightGrid {
+  margin-top: 20px;
+  background-color: rgb(45, 73, 100);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+}
+.coinSpotLight {
+  box-shadow: 0px 0px 5px 1px;
+  text-align: center;
 }
