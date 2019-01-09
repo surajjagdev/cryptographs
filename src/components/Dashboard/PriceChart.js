@@ -2,15 +2,11 @@ import HighChartsConfig from './HighChartsConfig';
 import React from 'react';
 import { AppContext } from '../App/AppProvider';
 import ReactHighCharts from 'react-highcharts';
+//visualization of crypto data using high charts
 const PriceChart = () => {
   return (
     <AppContext.Consumer>
-      {({}) => (
-        <div>
-          <ReactHighCharts config={HighChartsConfig()} />
-          <div>Hello</div>
-        </div>
-      )}
+      {({}) => <ReactHighCharts config={HighChartsConfig()} />}
     </AppContext.Consumer>
   );
 };
