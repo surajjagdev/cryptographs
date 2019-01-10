@@ -1,28 +1,21 @@
 export default {
   colors: [
-    '#DDDF0D',
-    '#55BF3B',
-    '#DF5353',
-    '#7798BF',
-    '#aaeeee',
-    '#ff0066',
-    '#eeaaee',
-    '#55BF3B',
-    '#DF5353',
-    '#7798BF',
-    '#aaeeee'
+    '#61d936',
+    '#552ccb',
+    '#1163c9',
+    '#04A1EE',
+    '#08C6E0',
+    '#14689E',
+    '#F376C1',
+    '#1B2839'
   ],
   chart: {
-    backgroundColor: {
-      linearGradient: { x1: 0, y1: 0, x2: 1, y2: 1 },
-      stops: [[0, 'rgb(48, 48, 96)'], [1, 'rgb(0, 0, 0)']]
-    },
+    backgroundColor: 'rgb(45, 73, 100)',
     borderColor: '#000000',
-    borderWidth: 2,
+    borderWidth: 0,
     className: 'dark-container',
-    plotBackgroundColor: 'rgba(255, 255, 255, .1)',
-    plotBorderColor: '#CCCCCC',
-    plotBorderWidth: 1
+    plotBackgroundColor: 'rgb(45, 73, 100)',
+    plotBorderWidth: 0
   },
   title: {
     style: {
@@ -38,7 +31,7 @@ export default {
   },
   xAxis: {
     gridLineColor: '#333333',
-    gridLineWidth: 1,
+    gridLineWidth: 0,
     labels: {
       style: {
         color: '#A0A0A0'
@@ -56,6 +49,7 @@ export default {
     }
   },
   yAxis: {
+    gridLineWidth: 0,
     gridLineColor: '#333333',
     labels: {
       style: {
@@ -122,9 +116,7 @@ export default {
     }
   },
   credits: {
-    style: {
-      color: '#666'
-    }
+    enabled: false
   },
   labels: {
     style: {
