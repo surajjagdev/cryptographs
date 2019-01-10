@@ -1,8 +1,13 @@
 import React from 'react';
+import moment from 'moment';
 import _ from 'lodash';
 const cryptowrapper = require('cryptocompare');
+
 //creates new react context
 export const AppContext = React.createContext();
+const maxLength = 10;
+const loopOver = 10;
+
 //provides state to other components
 export default class AppProvider extends React.Component {
   constructor(props) {
@@ -23,10 +28,11 @@ export default class AppProvider extends React.Component {
   componentDidMount = () => {
     this.fetchCoins();
     this.fetchPrices();
+    this.fetchHistorical();
   };
   addCoin = x => {
     let favorites = [...this.state.favorites];
-    if (favorites.length < 10) {
+    if (favorites.length < maxLength) {
       favorites.push(x);
       console.log(x);
       this.setState({ favorites });
@@ -51,6 +57,41 @@ export default class AppProvider extends React.Component {
     let prices = await this.prices();
     console.log(prices);
     this.setState({ prices });
+  };
+  fetchHistorical = async () => {
+    if (this.state.firstVisit) {
+      return;
+    }
+    let results = await this.historical();
+    let historical = [
+      {
+        name: this.state.currentFavorite,
+        data: results.map((symbol, index) => [
+          //subtract max val of 10 with index of each historical value
+          moment()
+            .subtract({ months: loopOver - index })
+            .valueOf(),
+          symbol.USD
+        ])
+      }
+    ];
+    this.setState({ historical });
+  };
+  historical = () => {
+    let promises = [];
+    for (let j = loopOver; j > 0; j--) {
+      promises.push(
+        cryptowrapper.priceHistorical(
+          this.state.currentFavorite,
+          ['USD'],
+          moment()
+            .subtract({ months: j })
+            .toDate()
+        )
+      );
+    }
+    //return all promises when all promises array is completely fetched
+    return Promise.all(promises);
   };
   //return a promise array
   prices = async () => {
@@ -87,7 +128,10 @@ export default class AppProvider extends React.Component {
   };
   //setting state of currentFavorite then going to the local storage and setting local storage to be stringified version of currentFavorite
   setCurrentFavorite = symbol => {
-    this.setState({ currentFavorite: symbol });
+    this.setState(
+      { currentFavorite: symbol, historical: null },
+      this.fetchHistorical
+    );
     localStorage.setItem(
       'cryptoDash',
       JSON.stringify({
@@ -96,14 +140,6 @@ export default class AppProvider extends React.Component {
       })
     );
   };
-  /* setCurrentFavorite = symbol => {
-    this.setState({ currentFavorite: symbol });
-    localStorage.setItem('cryptoDash', JSON.stringify({
-      currentFavorite:symbol
-    }))
-  };*/
-  //get data from local storage. If no data then page will be set to settings page
-  //and firstVisit will be true
   savedSettings() {
     let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
     if (!cryptoDashData) {

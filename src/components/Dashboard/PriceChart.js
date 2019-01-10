@@ -8,7 +8,15 @@ ReactHighCharts.Highcharts.setOptions(HighChartsTheme);
 const PriceChart = () => {
   return (
     <AppContext.Consumer>
-      {({}) => <ReactHighCharts config={HighChartsConfig()} />}
+      {({ historical }) => (
+        <div>
+          {historical ? (
+            <ReactHighCharts config={HighChartsConfig(historical)} />
+          ) : (
+            <div>Loading...</div>
+          )}
+        </div>
+      )}
     </AppContext.Consumer>
   );
 };

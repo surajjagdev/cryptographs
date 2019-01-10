@@ -7,7 +7,7 @@ const Tile = ({ symbol, change, price, setCurrentFavorite }) => {
     <div className="priceTile" onClick={setCurrentFavorite}>
       <div className="coinSymbol">{symbol}</div>
       <div className={change >= 0 ? 'coinChangeGreen' : 'coinChangeRed'}>
-        {change}
+        {change}%
       </div>
       <div className="coinPrice">${price}</div>
     </div>

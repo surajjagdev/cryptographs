@@ -21,13 +21,13 @@
 }
 .coinChangeGreen {
   justify-self: right;
-  margin-left: -5px;
+  margin-left: -27px;
   font-size: 1em;
   color: green;
 }
 .coinChangeRed {
   justify-self: right;
-  margin-left: -5px;
+  margin-left: -27px;
   font-size: 1em;
   color: red;
 }
