@@ -1,6 +1,7 @@
 # ProjectTitle: CrytoGraphs
 
 <img src='public/images/cryptodash.PNG' width='350px'>
+
 ## Description
 
 Users can search their favourite crytocurrency and get a real-time comparision to the fan-favourites.
