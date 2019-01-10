@@ -3,6 +3,7 @@ import React from 'react';
 import { AppContext } from '../App/AppProvider';
 import ReactHighCharts from 'react-highcharts';
 import HighChartsTheme from './HighChartsTheme';
+import './Dashboard.css';
 ReactHighCharts.Highcharts.setOptions(HighChartsTheme);
 //visualization of crypto data using high charts
 const PriceChart = () => {
@@ -13,7 +14,9 @@ const PriceChart = () => {
           {historical ? (
             <ReactHighCharts config={HighChartsConfig(historical)} />
           ) : (
-            <div>Loading...</div>
+            <div className="coinHistory">
+              Loading History...Its a slow process
+            </div>
           )}
         </div>
       )}
