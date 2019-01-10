@@ -15,6 +15,7 @@ export default class AppProvider extends React.Component {
     this.state = {
       page: 'settings',
       favorites: ['BTC', 'ETH', 'XRP', 'EOS', 'FLAP'],
+      timeInterval: 'months',
       ...this.savedSettings(),
       setPage: this.setPage,
       addCoin: this.addCoin,
@@ -22,7 +23,8 @@ export default class AppProvider extends React.Component {
       isInFavorites: this.isInFavorites,
       confirmFavorites: this.confirmFavorites,
       setFilteredCoins: this.setFilteredCoins,
-      setCurrentFavorite: this.setCurrentFavorite
+      setCurrentFavorite: this.setCurrentFavorite,
+      changeChartSelect: this.changeChartSelect
     };
   }
   componentDidMount = () => {
@@ -69,7 +71,7 @@ export default class AppProvider extends React.Component {
         data: results.map((symbol, index) => [
           //subtract max val of 10 with index of each historical value
           moment()
-            .subtract({ months: loopOver - index })
+            .subtract({ [this.state.timeInterval]: loopOver - index })
             .valueOf(),
           symbol.USD
         ])
@@ -85,7 +87,10 @@ export default class AppProvider extends React.Component {
           this.state.currentFavorite,
           ['USD'],
           moment()
-            .subtract({ months: j })
+            .subtract(
+              { [this.state.timeInterval]: j, historical: null },
+              this.fetchHistorical
+            )
             .toDate()
         )
       );
@@ -162,7 +167,14 @@ export default class AppProvider extends React.Component {
   setFilteredCoins = filteredCoins => {
     this.setState({ filteredCoins });
   };
-
+  //changing coin data btween weeks, months, days
+  changeChartSelect = value => {
+    console.log(`time Interval: ${this.state.timeInterval}`);
+    this.setState(
+      { timeInterval: value, historical: null },
+      this.fetchHistorical
+    );
+  };
   render() {
     console.log(this.state.isInFavorites);
     return (

@@ -50,3 +50,12 @@
   margin-top: 40%;
   margin-left: 21%;
 }
+#days,
+#weeks,
+#months {
+  color: #1163c9;
+  border: 1px solid;
+  margin: 5px;
+  height: 25px;
+  float: right;
+}
