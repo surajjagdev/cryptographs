@@ -25,7 +25,7 @@ Alternatively to view live site go to: https://cryptographs-currency.herokuapp.c
 
 ## Build Status
 
-This application as of now is building in progress.
+This application as of now built. API is a bit slow.
 
 ### Code style
 
