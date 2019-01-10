@@ -113,7 +113,13 @@ export default class AppProvider extends React.Component {
   confirmFavorites = () => {
     let currentFavorite = this.state.favorites[0];
     this.setState(
-      { firstVisit: false, page: 'dashboard', currentFavorite },
+      {
+        firstVisit: false,
+        page: 'dashboard',
+        currentFavorite,
+        prices: null,
+        historical: null
+      },
       () => {
         this.fetchPrices();
       }
