@@ -4,7 +4,7 @@
 
 ## Description
 
-Users can search their favourite crytocurrency and get a real-time comparision to the fan-favourites.
+Fun-little application where users can search and pick their favourite cryptocurrencies. They can then view the changes over 24 hours to its value and see historical data visualized on a line graph. Using cryptocompare API (data might be slow to retrieve on first opening, if it takes too long).
 
 ## Table of Contents (structure)
 
