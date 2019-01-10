@@ -8,7 +8,7 @@ const CoinSpotLight = () => {
     <AppContext.Consumer>
       {({ currentFavorite, coinList }) => (
         <div className="coinSpotLight">
-          <h2>{coinList[currentFavorite].CoinName}</h2>
+          {coinList ? <h2>{coinList[currentFavorite].CoinName}</h2> : null}
           <CoinImage
             style={{ height: '200px' }}
             coins={coinList[currentFavorite]}
